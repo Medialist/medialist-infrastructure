@@ -25,4 +25,4 @@
 
 - name: Ensure MongoDB is running
   sudo: yes
-  service: name=mongodb state=started enabled=yes
+  service: name=mongod state=started enabled=yes
