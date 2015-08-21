@@ -7,13 +7,21 @@
     - node
     - mongodb
     - nginx
+    - meteor
+    - app
   vars:
     node_env: production
+    meteor_settings:
+      "{}"
 
 - hosts: production
   roles:
     - node
     - mongodb
     - nginx
+    - meteor
+    - app
   vars:
     node_env: production
+    meteor_settings:
+      foo: bar
