@@ -1,0 +1,17 @@
+- hosts: all
+  roles:
+    - common
+
+- hosts: dev
+  roles:
+    - mongodb
+    - nginx
+  vars:
+    node_env: production
+
+- hosts: production
+  roles:
+    - mongodb
+    - nginx
+  vars:
+    node_env: production
