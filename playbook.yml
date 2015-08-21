@@ -4,6 +4,7 @@
 
 - hosts: dev
   roles:
+    - node
     - mongodb
     - nginx
   vars:
@@ -11,6 +12,7 @@
 
 - hosts: production
   roles:
+    - node
     - mongodb
     - nginx
   vars:

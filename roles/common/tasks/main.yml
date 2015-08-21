@@ -1,15 +1,7 @@
-- name: ensure base OS is up-to-date
-  sudo: yes
-  apt: upgrade=dist update_cache=yes
+# - name: ensure base OS is up-to-date
+#   sudo: yes
+#   apt: upgrade=dist update_cache=yes
 
 - name: Install Git
   sudo: yes
   apt: name=git state=present
-
-- name: Install Node
-  sudo: yes
-  apt: name={{ item }} state=present
-  with_items:
-    - nodejs
-    - npm
-    - nodejs-legacy

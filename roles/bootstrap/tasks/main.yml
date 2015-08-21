@@ -1,6 +1,6 @@
-- name: Ensure base OS is up-to-date
-  sudo: yes
-  apt: upgrade=dist update_cache=yes
+# - name: Ensure base OS is up-to-date
+#   sudo: yes
+#   apt: upgrade=dist update_cache=yes
 
 - name: Ensure ansible groups exists
   sudo: yes
@@ -16,6 +16,7 @@
   with_file:
     - public-keys/alan@tableflip.io.id_rsa.pub
     - public-keys/oli@tableflip.io.id_rsa.pub
+    - public-keys/richard@tableflip.io.id_rsa.pub
 
 - name: Set ansible permissions in /etc/sudoers
   sudo: yes
