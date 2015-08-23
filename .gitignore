@@ -1,4 +1,3 @@
 .vagrant
 production.json
 *id_rsa
-roles/app/files/deploy-keys
