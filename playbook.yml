@@ -11,8 +11,6 @@
     - medialist
   vars:
     node_env: production
-    meteor_settings:
-      "{}"
 
 - hosts: production
   roles:
@@ -23,5 +21,3 @@
     - medialist
   vars:
     node_env: production
-    meteor_settings:
-      foo: bar
