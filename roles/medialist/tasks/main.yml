@@ -1,0 +1,56 @@
+- name: Ensure system groups exists
+  sudo: yes
+  group: name={{user}} state=present
+
+- name: Ensure system user exists
+  sudo: yes
+  user: name={{user}} group={{user}}
+
+- name: Copy deploy keys
+  sudo: yes
+  sudo_user: "{{user}}"
+  copy: src=deploy-keys/ dest=/home/{{user}}/.ssh mode=0400 force=yes
+
+- name: Remove Medialist clone
+  sudo: yes
+  sudo_user: "{{user}}"
+  command: rm -rf /home/{{user}}/repo
+
+- name: Remove Medialist build
+  sudo: yes
+  sudo_user: "{{user}}"
+  command: rm -rf /home/{{user}}/build
+
+- name: Clone Medialist
+  sudo: yes
+  sudo_user: "{{user}}"
+  git: repo=git@github.com:{{repo}}.git dest=/home/{{user}}/repo accept_hostkey=yes key_file=/home/{{user}}/.ssh/id_rsa
+
+- name: Copy settings over
+  sudo: yes
+  sudo_user: "{{user}}"
+  copy: src=settings.json dest=/home/{{user}}/repo/settings.json force=yes
+
+- name: Demeteorize Medialist
+  sudo: yes
+  sudo_user: "{{user}}"
+  command: demeteorizer -o /home/{{user}}/build  --json "$(cat settings.json)"
+  args:
+    chdir: /home/{{user}}/repo
+
+- name: Install Meteor NPM dependencies
+  sudo: yes
+  sudo_user: "{{user}}"
+  shell: npm install
+  args:
+    chdir: /home/{{user}}/build
+
+- name: Run Demeteorized app
+  sudo: yes
+  sudo_user: "{{user}}"
+  command: node main.js
+  environment:
+    ROOT_URL: http://dev.medialist.io
+    MONGO_URL: mongodb://localhost:27017/medialist
+  args:
+    chdir: /home/{{user}}/build

@@ -1,19 +1,33 @@
-- name: Add nodesource apt repository key
+- name: Create Node distro directory
   sudo: yes
-  apt_key:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+  file: path=/home/node state=directory
 
-- name: Add nodesource nodejs0.10 apt repository
+- name: Download Node distro
   sudo: yes
-  apt_repository:
-    repo: "deb https://deb.nodesource.com/node_0.10 trusty main"
+  get_url: url=http://nodejs.org/dist/v0.10.36/node-v0.10.36.tar.gz dest=/home/node/node.tar.gz
 
-- name: Remove default nodejs repository
+- name: Unarchive Node installer
   sudo: yes
-  apt_repository: repo='ppa:chris-lea/node.js' state=absent
+  unarchive: src=/home/node/node.tar.gz dest=/home/node copy=no
+
+- name: Install build dependencies
+  sudo: yes
+  apt: name=build-essential
+
+- name: Configure Node installer
+  sudo: yes
+  command: ./configure
+  args:
+    chdir: /home/node/node-v0.10.36
+
+- name: Make Node installer
+  sudo: yes
+  command: make
+  args:
+    chdir: /home/node/node-v0.10.36
 
 - name: Install Node
   sudo: yes
-  apt: name={{ item }} state=present
-  with_items:
-    - nodejs
+  command: make install
+  args:
+    chdir: /home/node/node-v0.10.36
