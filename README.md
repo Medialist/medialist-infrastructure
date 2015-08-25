@@ -77,7 +77,7 @@ You will need some secrets... Talk to your friendly neighborhood tableflipper.
 # Download and provision a vm
 vagrant up
 
-# Update vm with KitTorrent services
+# Update vm with our roles
 ansible-playbook -i dev playbook.yml
 ```
 
