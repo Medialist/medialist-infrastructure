@@ -7,6 +7,8 @@
     - node
     - mongodb
     - nginx
+    - meteor
+    - medialist
   vars:
     node_env: production
 
@@ -15,5 +17,7 @@
     - node
     - mongodb
     - nginx
+    - meteor
+    - medialist
   vars:
     node_env: production
