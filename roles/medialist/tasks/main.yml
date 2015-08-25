@@ -11,11 +11,6 @@
   sudo_user: "{{user}}"
   copy: src=deploy-keys/ dest=/home/{{user}}/{{service}}/.ssh mode=0400 force=yes
 
-- name: Remove Medialist clone
-  sudo: yes
-  sudo_user: "{{user}}"
-  command: rm -rf /home/{{user}}/{{service}}/repo
-
 - name: Remove Medialist build
   sudo: yes
   sudo_user: "{{user}}"
@@ -24,7 +19,7 @@
 - name: Clone Medialist
   sudo: yes
   sudo_user: "{{user}}"
-  git: repo=git@github.com:{{repo}}.git dest=/home/{{user}}/{{service}}/repo accept_hostkey=yes key_file=/home/{{user}}/{{service}}/.ssh/id_rsa
+  git: repo=git@github.com:{{repo}}.git dest=/home/{{user}}/{{service}}/repo update=yes accept_hostkey=yes key_file=/home/{{user}}/{{service}}/.ssh/id_rsa
 
 - name: Demeteorize Medialist
   sudo: yes
@@ -55,13 +50,8 @@
   sudo: yes
   service: name={{service}} state=started
 
-# - name: Run Demeteorized app
-#   sudo: yes
-#   sudo_user: "{{user}}"
-#   command: node main.js
-#   environment:
-#     ROOT_URL: {{root_url}}
-#     MONGO_URL: mongodb://localhost:27017/medialist
-#     PORT: 3000
-#   args:
-#     chdir: /home/{{user}}/{{service}}/build
+- name: Copy Nginx config
+  sudo: yes
+  copy: src=nginx/nginx.conf dest=/etc/nginx/conf.d/{{service}}.conf mode=0644 force=yes
+  notify:
+    - Restart Nginx
