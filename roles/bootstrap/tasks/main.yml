@@ -14,7 +14,9 @@
   sudo: yes
   authorized_key: user=ansible key="{{ item }}"
   with_file:
-    - public-keys/medialist.id_rsa.pub
+    - public-keys/richard@tableflip.io.id_rsa.pub
+    - public-keys/alan@tableflip.io.id_rsa.pub
+    - public-keys/oli@tableflip.io.id_rsa.pub
 
 - name: Set ansible permissions in /etc/sudoers
   sudo: yes

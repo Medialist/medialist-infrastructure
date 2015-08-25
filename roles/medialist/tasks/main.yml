@@ -9,48 +9,59 @@
 - name: Copy deploy keys
   sudo: yes
   sudo_user: "{{user}}"
-  copy: src=deploy-keys/ dest=/home/{{user}}/.ssh mode=0400 force=yes
+  copy: src=deploy-keys/ dest=/home/{{user}}/{{service}}/.ssh mode=0400 force=yes
 
 - name: Remove Medialist clone
   sudo: yes
   sudo_user: "{{user}}"
-  command: rm -rf /home/{{user}}/repo
+  command: rm -rf /home/{{user}}/{{service}}/repo
 
 - name: Remove Medialist build
   sudo: yes
   sudo_user: "{{user}}"
-  command: rm -rf /home/{{user}}/build
+  command: rm -rf /home/{{user}}/{{service}}/build
 
 - name: Clone Medialist
   sudo: yes
   sudo_user: "{{user}}"
-  git: repo=git@github.com:{{repo}}.git dest=/home/{{user}}/repo accept_hostkey=yes key_file=/home/{{user}}/.ssh/id_rsa
-
-- name: Copy settings over
-  sudo: yes
-  sudo_user: "{{user}}"
-  copy: src=settings.json dest=/home/{{user}}/repo/settings.json force=yes
+  git: repo=git@github.com:{{repo}}.git dest=/home/{{user}}/{{service}}/repo accept_hostkey=yes key_file=/home/{{user}}/{{service}}/.ssh/id_rsa
 
 - name: Demeteorize Medialist
   sudo: yes
   sudo_user: "{{user}}"
-  command: demeteorizer -o /home/{{user}}/build  --json "$(cat settings.json)"
+  command: demeteorizer -o /home/{{user}}/{{service}}/build
   args:
-    chdir: /home/{{user}}/repo
+    chdir: /home/{{user}}/{{service}}/repo
 
 - name: Install Meteor NPM dependencies
   sudo: yes
   sudo_user: "{{user}}"
   shell: npm install
   args:
-    chdir: /home/{{user}}/build
+    chdir: /home/{{user}}/{{service}}/build
+  notify:
+    - Restart {{service}}
 
-- name: Run Demeteorized app
+- name: Copy settings
   sudo: yes
   sudo_user: "{{user}}"
-  command: node main.js
-  environment:
-    ROOT_URL: http://dev.medialist.io
-    MONGO_URL: mongodb://localhost:27017/medialist
-  args:
-    chdir: /home/{{user}}/build
+  copy: src=settings.json dest=/home/{{user}}/{{service}}/settings.json force=yes
+
+- name: Copy Upstart config
+  sudo: yes
+  template: src=upstart/upstart.conf dest=/etc/init/{{service}}.conf mode=0644 force=yes
+
+- name: Ensure the app is running
+  sudo: yes
+  service: name={{service}} state=started
+
+# - name: Run Demeteorized app
+#   sudo: yes
+#   sudo_user: "{{user}}"
+#   command: node main.js
+#   environment:
+#     ROOT_URL: {{root_url}}
+#     MONGO_URL: mongodb://localhost:27017/medialist
+#     PORT: 3000
+#   args:
+#     chdir: /home/{{user}}/{{service}}/build
