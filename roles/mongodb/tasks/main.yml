@@ -15,7 +15,7 @@
 
 - name: Install MongoDB
   sudo: yes
-  apt: name=mongodb-org state=latest update_cache=yes
+  apt: name=mongodb-org state=present
 
 - name: Copy core MongoDB configs
   sudo: yes
