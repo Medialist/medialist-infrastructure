@@ -39,3 +39,5 @@
 - name: Install Git
   sudo: yes
   apt: name=git state=present
+
+- { include: swap.yml }

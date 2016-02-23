@@ -2,3 +2,7 @@
   roles:
     - apt-update
     - bootstrap
+    # - node
+    # - mongodb
+    # - nginx
+    # - meteor

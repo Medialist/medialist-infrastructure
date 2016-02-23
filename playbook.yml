@@ -1,23 +1,15 @@
 - hosts: all
   roles:
-    - apt-update
+    # - apt-update
 
 - hosts: dev
   roles:
-    - node
-    - mongodb
-    - nginx
-    - meteor
     - medialist
   vars:
     node_env: production
 
 - hosts: production
   roles:
-    - node
-    - mongodb
-    - nginx
-    - meteor
     - medialist
   vars:
     node_env: production
