@@ -15,7 +15,7 @@
 
 - name: Install MongoDB
   sudo: yes
-  apt: name=mongodb-org state=present
+  apt: name=mongodb-org state=latest update_cache=yes
 
 - name: Copy core MongoDB configs
   sudo: yes
@@ -26,3 +26,4 @@
 - name: Ensure MongoDB is running
   sudo: yes
   service: name=mongod state=started enabled=yes
+
