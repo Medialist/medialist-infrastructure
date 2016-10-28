@@ -63,22 +63,23 @@ When we need to scale the infrastructure we can add additional hosts to an inven
 
 ## Prerequisites
 
-You will need some secrets... Talk to your friendly neighborhood tableflipper.
+- Install VirtualBox
+- Install Vagrant (`brew install vagrant`)
+- Install Ansible
+- You will need the vault password. Talk to your friendly neighborhood tableflipper.
 
 ## Usage
 
 **To bootstrap a local test server with vagrant**
 
-- Install Ansible
-- Install Vagrant (`brew install vagrant`)
-- Add `10.100.106.100	dev.medialist.com` to your local `/etc/hosts`
+- Add `10.100.109.100	dev.Medialistuk.com` to your local `/etc/hosts`
 
 ```sh
 # Download and provision a vm
 vagrant up
 
 # Update vm with our roles
-ansible-playbook -i dev playbook.yml
+ansible-playbook -i dev playbook.yml --ask-vault-pass
 ```
 
 You now have a test vm, running locally
@@ -90,8 +91,34 @@ You now have a test vm, running locally
 
 ```sh
 # bootstrap ansible user
-ansible-playbook -i production bootstrap.yml --extra-vars "ansible_ssh_user=root"
+ansible-playbook -i production bootstrap.yml --ask-vault-pass --extra-vars "ansible_user=root"
 
 # Intall app and dependencies
-ansible-playbook -i production playbook.yml
+ansible-playbook -i production playbook.yml --ask-vault-pass
 ```
+
+## Secrets - Ansible Vault
+
+See: http://docs.ansible.com/ansible/playbooks_vault.html
+
+**Creating Encrypting Files**
+
+Encrypt a list of files. You'll be prompted for a passphrase which'll be the key for decrypting them.
+
+```sh
+ansible-vault encrypt [files]
+```
+
+For example, to encrypt our deploy keys and secrets, we do:
+
+```sh
+ansible-vault encrypt group_vars/all/keys.yml group_vars/dev/dev_secrets.yml group_vars/next/next_secrets.yml group_vars/production/production_secrets.yml
+```
+
+**Editing Encrypted Files**
+
+```sh
+ansible-vault edit group_vars/production/production_secrets.yml
+```
+
+Will prompt you for the passphrase and open the file your default $EDITOR as configured in your shell.

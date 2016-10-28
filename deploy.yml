@@ -1,0 +1,9 @@
+- hosts: web
+  roles:
+    - apt-update
+    - mongodump
+    - medialist-web
+
+- hosts: web:!dev
+  roles:
+    - medialist-web-letsencrypt

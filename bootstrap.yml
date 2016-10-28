@@ -1,8 +1,9 @@
-- hosts: all
+- hosts: web
   roles:
     - apt-update
     - bootstrap
-    # - node
-    # - mongodb
-    # - nginx
-    # - meteor
+    - nginx
+    - mongodb
+    - node
+    - meteor
+    - letsencrypt

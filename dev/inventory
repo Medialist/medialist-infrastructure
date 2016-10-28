@@ -1,2 +1,5 @@
 [dev]
-dev.medialist.io ansible_ssh_user=ansible root_url=http://dev.medialist.io
+dev.medialist.io
+
+[web]
+dev.medialist.io

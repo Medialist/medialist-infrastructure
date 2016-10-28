@@ -1,2 +1,5 @@
 [production]
-next.medialist.io ansible_ssh_user=ansible root_url=http://next.medialist.io
+medialist.io
+
+[web]
+medialist.io

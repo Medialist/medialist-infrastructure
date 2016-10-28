@@ -1,4 +1,4 @@
 .vagrant
+.DS_Store
 production.json
 *id_rsa
-roles/medialist/files/settings.json
