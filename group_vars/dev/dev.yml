@@ -1,0 +1,3 @@
+scheme: http
+urls:
+  web: dev.medialist.io

@@ -1,8 +1,14 @@
-- hosts: all
+- hosts: web
   roles:
     - apt-update
     - bootstrap
-    # - node
-    # - mongodb
-    # - nginx
-    # - meteor
+    - nginx
+    - mongodb
+    - node
+    - meteor
+    - letsencrypt
+    - medialist-web
+
+- hosts: web:!dev
+  roles:
+    - medialist-web-letsencrypt

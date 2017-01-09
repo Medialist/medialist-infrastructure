@@ -1,0 +1,16 @@
+{
+  "twitter": {
+    "consumer_key": "{{secrets.twitter.consumer_key}}",
+    "consumer_secret": "{{secrets.twitter.consumer_secret}}",
+    "access_token_key": "{{secrets.twitter.access_token_key}}",
+    "access_token_secret": "{{secrets.twitter.access_token_secret}}"
+  },
+  "migrations": {
+    "whitelist": [
+      "olizilla",
+      "richsilvo",
+      "_alanshaw",
+      "_bmordan"
+    ]
+  }
+}

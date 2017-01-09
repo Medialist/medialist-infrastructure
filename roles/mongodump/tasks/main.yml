@@ -1,0 +1,17 @@
+# Dump all yer mongo collections to `/root/<iso datetime>.mongodump`
+# Add a symlink to the current one under `/root/current.mongodump`
+
+# See: https://www.mongodb.com/blog/post/archiving-and-compression-in-mongodb-tools
+
+- name: Pick a new mongodump filename
+  set_fact: mongodump_outfile=/root/{{ lookup('pipe', 'date -u +%FT%TZ') }}.mongodump
+
+- name: Create a dump of the Mongo db
+  become: yes
+  command: /usr/bin/mongodump --gzip --archive={{mongodump_outfile}}
+  args:
+    creates: "{{mongodump_outfile}}"
+
+- name: Create symlink to latest mongodump
+  become: yes
+  file: src={{mongodump_outfile}} dest=/root/current.mongodump state=link
