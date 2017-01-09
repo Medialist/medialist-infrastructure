@@ -7,3 +7,8 @@
     - node
     - meteor
     - letsencrypt
+    - medialist-web
+
+- hosts: web:!dev
+  roles:
+    - medialist-web-letsencrypt

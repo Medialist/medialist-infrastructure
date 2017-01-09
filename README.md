@@ -72,7 +72,7 @@ When we need to scale the infrastructure we can add additional hosts to an inven
 
 **To bootstrap a local test server with vagrant**
 
-- Add `10.100.109.100	dev.Medialistuk.com` to your local `/etc/hosts`
+- Add `10.100.106.100	dev.medialist.io` to your local `/etc/hosts`
 
 ```sh
 # Download and provision a vm
@@ -97,7 +97,7 @@ ansible-playbook -i production bootstrap.yml --ask-vault-pass --extra-vars "ansi
 ansible-playbook -i production playbook.yml --ask-vault-pass
 ```
 
-## Secrets - Ansible Vault
+## Secrets - Ansible Vault
 
 See: http://docs.ansible.com/ansible/playbooks_vault.html
 
