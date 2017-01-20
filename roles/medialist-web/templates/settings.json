@@ -12,5 +12,13 @@
       "_alanshaw",
       "_bmordan"
     ]
+  },
+  "uploadcare": {
+    "privateKey": "{{secrets.uploadcare.private_key}}"
+  },
+  "public": {
+    "uploadcare": {
+      "publicKey": "{{secrets.uploadcare.public_key}}"
+    }
   }
 }
