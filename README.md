@@ -2,6 +2,17 @@
 
 **Ansible scripts for deploying and maintaining the servers**
 
+TL;DR
+
+Install ansible >= 2.1.2.0
+
+```
+./deploy.sh next
+#> the vault password
+```
+
+## More info
+
 ```sh
 ├── Vagrantfile        # Test the scripts locally with `vagrant up`
 ├── bootstrap.yml      # Get a new vm ready for ansible
