@@ -1,24 +1,27 @@
 {
+  "authentication": {
+    "sendLink": true,
+    "tokenLife": 900000
+  },
+  "email": {
+    "defaultFrom": "Medialist <noreply@medialist.io>",
+    "mailUrl": "smtp://{{secrets.email.user}}:{{secrets.email.password}}@smtp.sendgrid.net:587"
+  },
+  "public": {
+    "uploadcare": {
+      "publicKey": "{{secrets.uploadcare.public_key}}"
+    },
+    "authentication": {
+      "emailDomains": ["medialist.io", "achingbrain.net", "tableflip.io"]
+    }
+  },
   "twitter": {
     "consumer_key": "{{secrets.twitter.consumer_key}}",
     "consumer_secret": "{{secrets.twitter.consumer_secret}}",
     "access_token_key": "{{secrets.twitter.access_token_key}}",
     "access_token_secret": "{{secrets.twitter.access_token_secret}}"
   },
-  "migrations": {
-    "whitelist": [
-      "olizilla",
-      "richsilvo",
-      "_alanshaw",
-      "_bmordan"
-    ]
-  },
   "uploadcare": {
     "privateKey": "{{secrets.uploadcare.private_key}}"
-  },
-  "public": {
-    "uploadcare": {
-      "publicKey": "{{secrets.uploadcare.public_key}}"
-    }
   }
 }
