@@ -5,14 +5,14 @@
   },
   "email": {
     "defaultFrom": "Medialist <noreply@medialist.io>",
-    "mailUrl": "smtp://{{secrets.email.user}}:{{secrets.email.password}}@smtp.sendgrid.net:587"
+    "mailUrl": "smtp://{{secrets.email.user}}:{{secrets.email.password}}@smtp.mailgun.org:587"
   },
   "public": {
     "uploadcare": {
       "publicKey": "{{secrets.uploadcare.public_key}}"
     },
     "authentication": {
-      "emailDomains": ["medialist.io", "achingbrain.net", "tableflip.io"]
+      "emailDomains": ["medialist.io", "tableflip.io"]
     }
   },
   "twitter": {
