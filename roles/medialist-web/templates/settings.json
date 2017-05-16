@@ -16,7 +16,8 @@
       "publicKey": "{{secrets.uploadcare.public_key}}"
     },
     "authentication": {
-      "emailDomains": ["medialist.io", "tableflip.io"]
+      "emailDomains": ["medialist.io"],
+      "extraEmailDomains": ["tableflip.io", "achingbrain.net"]
     }
   },
   "twitter": {
