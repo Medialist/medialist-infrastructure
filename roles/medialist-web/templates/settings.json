@@ -15,6 +15,9 @@
     "uploadcare": {
       "publicKey": "{{secrets.uploadcare.public_key}}"
     },
+    "heapanalytics": {
+      "appId": "2072876906"
+    },
     "authentication": {
       "emailDomains": ["medialist.io"],
       "extraEmailDomains": ["tableflip.io", "achingbrain.net"]
