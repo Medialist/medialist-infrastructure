@@ -21,7 +21,8 @@
     "authentication": {
       "emailDomains": ["medialist.io"],
       "extraEmailDomains": ["tableflip.io", "achingbrain.net"]
-    }
+    },
+    "attachSchemasToDatabase": true
   },
   "twitter": {
     "consumer_key": "{{secrets.twitter.consumer_key}}",
@@ -31,5 +32,7 @@
   },
   "uploadcare": {
     "privateKey": "{{secrets.uploadcare.private_key}}"
-  }
+  },
+  "validateDatabaseOnStartup": true,
+  "updateContactsFromTwitter": true
 }
