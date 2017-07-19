@@ -33,6 +33,7 @@
   "uploadcare": {
     "privateKey": "{{secrets.uploadcare.private_key}}"
   },
+  "attachSchemasToDatabase": true,
   "validateDatabaseOnStartup": true,
   "updateContactsFromTwitter": true
 }
