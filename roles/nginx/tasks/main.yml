@@ -7,3 +7,11 @@
   copy: src=conf/ dest=/etc/nginx/ mode=0644 force=yes
   notify:
     - Restart Nginx
+
+- name: Generate Diffie-Hellman parameters
+  become: yes
+  command: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+  args:
+    creates: /etc/ssl/certs/dhparam.pem
+  notify:
+    - Restart Nginx
