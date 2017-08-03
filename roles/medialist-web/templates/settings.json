@@ -15,6 +15,9 @@
     "uploadcare": {
       "publicKey": "{{secrets.uploadcare.public_key}}"
     },
+    "intercom": {
+      "appId": "lds640xi"
+    },
     "heapanalytics": {
       "appId": "2072876906"
     },
