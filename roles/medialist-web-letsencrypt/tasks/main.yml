@@ -11,14 +11,6 @@
   notify:
     - Restart Nginx
 
-- name: Create dhparams
-  become: yes
-  command: openssl dhparam -out /etc/letsencrypt/live/{{inventory_hostname}}/dhparams.pem 2048
-  args:
-    creates: /etc/letsencrypt/live/{{inventory_hostname}}/dhparams.pem
-  notify:
-    - Restart Nginx
-
 - name: Set cron to renew certs
   become: yes
   cron: name="certbot renew" minute="29" hour="7" job="/usr/bin/certbot-auto renew"
