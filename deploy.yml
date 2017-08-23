@@ -1,7 +1,3 @@
-- hosts: web:!next
-  roles:
-    - mongodump
-
 - hosts: web
   roles:
     - apt-update

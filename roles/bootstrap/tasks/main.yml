@@ -12,7 +12,6 @@
   with_file:
     - public-keys/alan@tableflip.io.id_rsa.pub
     - public-keys/oli@tableflip.io.id_rsa.pub
-    - public-keys/richard@tableflip.io.id_rsa.pub
     - public-keys/bernard@tableflip.io.id_rsa.pub
     - public-keys/alex@achingbrain.net.id_rsa.pub
     - public-keys/alex@medialist.io.id_rsa.pub
