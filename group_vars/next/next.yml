@@ -1,3 +1,9 @@
 scheme: https
 urls:
   web: next.medialist.io
+
+authentication:
+  emailDomain: medialist.io
+
+intercom:
+  appId: lds640xi

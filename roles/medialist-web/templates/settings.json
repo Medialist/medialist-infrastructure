@@ -16,14 +16,14 @@
       "publicKey": "{{secrets.uploadcare.public_key}}"
     },
     "intercom": {
-      "appId": "lds640xi"
+      "appId": "{{intercom.appId}}"
     },
     "heapanalytics": {
       "appId": "2072876906"
     },
     "authentication": {
-      "emailDomains": ["medialist.io"],
-      "extraEmailDomains": ["tableflip.io", "achingbrain.net"]
+      "emailDomains": ["{{authentication.emailDomain}}"],
+      "extraEmailDomains": ["medialist.io", "tableflip.io", "achingbrain.net"]
     },
     "attachSchemasToDatabase": true
   },
