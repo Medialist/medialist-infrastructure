@@ -8,7 +8,7 @@
     - letsencrypt
 
 # Only install mongo on local dev... we use Atlas for prod.
-- hosts: web:dev
+- hosts: dev
   roles:
     - mongodb
 
