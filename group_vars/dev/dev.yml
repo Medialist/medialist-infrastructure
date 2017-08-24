@@ -1,3 +1,9 @@
 scheme: http
 urls:
   web: dev.medialist.io
+
+authentication:
+  emailDomain: medialist.io
+
+intercom:
+  appId: lds640xi

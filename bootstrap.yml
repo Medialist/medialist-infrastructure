@@ -3,12 +3,21 @@
     - apt-update
     - bootstrap
     - nginx
-    - mongodb
     - node
     - meteor
     - letsencrypt
+
+# Only install mongo on local dev... we use Atlas for prod.
+- hosts: dev
+  roles:
+    - mongodb
+
+# Needs a mongo somewhere, so do this after dev has installed a mongo.
+- hosts: web
+  roles:
     - medialist-web
 
+# No SSL certs for dev.
 - hosts: web:!dev
   roles:
     - medialist-web-letsencrypt
