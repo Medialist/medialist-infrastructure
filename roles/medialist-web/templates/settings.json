@@ -23,7 +23,7 @@
     },
     "authentication": {
       "emailDomains": ["{{authentication.emailDomain}}"],
-      "extraEmailDomains": ["medialist.io", "tableflip.io", "achingbrain.net"]
+      "extraEmailDomains": ["medialist.io"]
     },
     "attachSchemasToDatabase": true
   },
@@ -37,6 +37,6 @@
     "privateKey": "{{secrets.uploadcare.private_key}}"
   },
   "attachSchemasToDatabase": true,
-  "validateDatabaseOnStartup": true,
+  "validateDatabaseOnStartup": false,
   "updateContactsFromTwitter": true
 }
