@@ -22,8 +22,8 @@
       "appId": "2072876906"
     },
     "authentication": {
-      "emailDomains": ["{{authentication.emailDomain}}"],
-      "extraEmailDomains": ["medialist.io"]
+      "teamDomains": ["{{authentication.teamDomain}}"],
+      "supportDomains": ["medialist.io"]
     },
     "attachSchemasToDatabase": true
   },

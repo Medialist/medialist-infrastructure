@@ -3,7 +3,7 @@ urls:
   web: bm.medialist.io
 
 authentication:
-  emailDomain: bm.com
+  teamDomain: bm.com
 
 intercom:
   appId: xeip3abm

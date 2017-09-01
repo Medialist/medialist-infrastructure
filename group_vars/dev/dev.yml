@@ -3,7 +3,7 @@ urls:
   web: dev.medialist.io
 
 authentication:
-  emailDomain: medialist.io
+  teamDomain: medialist.io
 
 intercom:
   appId: lds640xi
