@@ -1,3 +1,4 @@
+.build
 .vagrant
 .DS_Store
 production.json

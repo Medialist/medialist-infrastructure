@@ -1,0 +1,30 @@
+- hosts: galaxy
+  connection: local
+  vars:
+    repo: Medialist/medialist-app2
+    build_dir: ./.build
+    domain: "{{inventory_hostname}}"
+    customer: "{{inventory_hostname_short}}"
+    settings_file: "settings.{{customer}}.json"
+
+  tasks:
+    - name: Clone the repo
+      run_once: true
+      git: dest={{build_dir}}/src repo=ssh://git@github.com/{{repo}}.git version=HEAD depth=1 update=yes force=yes
+
+
+    - name: Install our npm dependencies
+      run_once: true
+      command: meteor npm install
+      args:
+        chdir: "{{build_dir}}/src"
+
+    - name: Copy settings
+      local_action: template src=./deploy-galaxy.settings.tpl.json dest={{build_dir}}/{{settings_file}} force=yes
+
+    - name: Deploy to galaxy
+      shell: meteor deploy {{domain}} --settings ../{{settings_file}}
+      environment:
+        DEPLOY_HOSTNAME: eu-west-1.galaxy-deploy.meteor.com
+      args:
+        chdir: "{{build_dir}}/src"

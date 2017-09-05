@@ -1,0 +1,49 @@
+{
+  "galaxy.meteor.com": {
+    "env": {
+      "NODE_ENV":"production",
+      "MONGO_URL": "{{mongo_url}}",
+      "MONGO_OPLOG_URL": "{{mongo_oplog_url}}"
+    }
+  },
+  "authentication": {
+    "sendLink": {{authentication.sendLink | to_json}},
+    "tokenLife": 900000
+  },
+  "email": {
+    "defaultFrom": "Medialist <noreply@medialist.io>",
+    "mailUrl": "smtp://{{secrets.email.user}}:{{secrets.email.password}}@smtp.mailgun.org:587"
+  },
+  "embeds": {
+    "userAgent": "'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36'",
+    "timeout": 10000
+  },
+  "public": {
+    "uploadcare": {
+      "publicKey": "{{secrets.uploadcare.public_key}}"
+    },
+    "intercom": {
+      "appId": "{{intercom.appId}}"
+    },
+    "heapanalytics": {
+      "appId": "2072876906"
+    },
+    "authentication": {
+      "teamDomains": ["{{authentication.teamDomain}}"],
+      "supportDomains": ["medialist.io"]
+    },
+    "attachSchemasToDatabase": false
+  },
+  "twitter": {
+    "consumer_key": "{{secrets.twitter.consumer_key}}",
+    "consumer_secret": "{{secrets.twitter.consumer_secret}}",
+    "access_token_key": "{{secrets.twitter.access_token_key}}",
+    "access_token_secret": "{{secrets.twitter.access_token_secret}}"
+  },
+  "uploadcare": {
+    "privateKey": "{{secrets.uploadcare.private_key}}"
+  },
+  "attachSchemasToDatabase": false,
+  "validateDatabaseOnStartup": false,
+  "updateContactsFromTwitter": true
+}
