@@ -1,3 +1,10 @@
+
+**To deplout medialist you want: https://github.com/medialist/medialist-galaxy**
+
+While the following should still work, it is not actively maintained. We're keeping it around as it's good to know how to deploy your code, but for now we are using Meteor Galaxy to do most of the work.
+
+---
+
 # Medialist Infrastructure
 
 **Ansible scripts for deploying and maintaining the servers**
